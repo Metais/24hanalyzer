@@ -34,8 +34,27 @@ def process_candle_data(data_line, my_list):
     my_list.appendleft(Kline(data_line))
 
 
-def sell(quote_amount, price, transactions):
-    # calculate received amount by subtracting 0.1% fee cost
-    base_amount = price * quote_amount * 0.999
+def sell(base_amount, price, date, transactions):
+    """Sell all of the base_amount available at price, records transaction."""
 
-    transactions.append(Transaction(False, price, base_amount))
+    # Add transaction to list
+    transactions.append(Transaction(False, price, base_amount, date))
+
+    # calculate received amount by subtracting 0.1% fee cost
+    quote_amount = price * base_amount * 0.999
+    base_amount = 0
+
+    return base_amount, quote_amount
+
+
+def buy(quote_amount, price, date, transactions):
+    """Sell all of the base_amount available at price, records transaction."""
+
+    # calculate received amount by subtracting 0.1% fee cost
+    base_amount = (quote_amount / price) * 0.999
+    quote_amount = 0
+
+    # Add transaction to list
+    transactions.append(Transaction(True, price, base_amount, date))
+
+    return base_amount, quote_amount

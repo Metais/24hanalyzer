@@ -1,5 +1,3 @@
-
-
 class Kline:
     """Class that stores and handles candle data"""
 
