@@ -1,7 +1,7 @@
 import collections
 from calculations import *
 
-file_name = "AVAXUSDT-1m-2021-09.csv"
+file_name = "data/AVAXUSDT-1m-2021-01.csv"
 
 # 1440 1m candles fit in one day
 previous_period_length = 1440
